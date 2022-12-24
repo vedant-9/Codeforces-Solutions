@@ -2,11 +2,11 @@
 My AC Solutions to nearest 1300+ Codeforces Problems.
 
 ## Problem Link Format
-- https://codeforces.com/contest/<contestID>/problem/<problemTag>
+- https://codeforces.com/contest/`contestID`/problem/`problemTag`
 - eg. https://codeforces.com/contest/1360/problem/A
 
 ## Search for solution 
-- <contestID>_<problemTag>_<problemName>
+- `contestID`_`problemTag`_`problemName`
 - eg. 1360_A_Minimal Square
 
 ## NOTE
