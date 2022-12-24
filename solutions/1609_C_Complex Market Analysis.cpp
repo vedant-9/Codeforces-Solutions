@@ -1,0 +1,76 @@
+// Author - Vedant Valsangkar
+#pragma GCC optimize("Ofast")
+#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
+#pragma GCC optimize("unroll-loops")
+#include<bits/stdc++.h>
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
+using namespace std;
+using namespace __gnu_pbds;
+
+template<class T> using ordered_set = tree<T,null_type,less<T>,rb_tree_tag,tree_order_statistics_node_update>;
+
+typedef long long    ll;
+typedef long double  ld;
+#define int          long long
+#define rep(i,s,e)   for(int i=s;i<e;i++)
+#define repr(i,s,e)  for(int i=s;i>=e;i--)
+#define in(a)        for(auto &i:a) cin>>i
+#define out(a)       for(auto &i:a) cout<<i<<" "; cout<<endl
+#define uniq(a)      a.erase(unique(all(a)),a.end())
+#define all(a)       a.begin(),a.end()
+#define allr(a)      a.rbegin(),a.rend()
+#define endl         '\n'
+
+bool per_square(ld x){if(x<0) return 0; ll sr=sqrt(x); return (sr*sr==x);}
+bool is_prime(ll x){ for(int i=2;i*i<=x;i++) if(x%i==0) return 0; return 1;}
+
+void solve()
+{
+    // 1 1 1 P 1 1 -> (i+1)*(sz-i+1)
+    int n,e; cin>>n>>e; vector<int> a(n); in(a);
+    vector<vector<int>> segs;
+    rep(i,0,e) {
+        vector<int> cur;
+        for(int j=i;j<n;j+=e) {
+            if(a[j]==1 or is_prime(a[j])) cur.push_back(a[j]);
+            else { 
+                if(!cur.empty()) segs.push_back(cur);
+                cur.clear();
+            }
+        }
+        if(!cur.empty()) segs.push_back(cur);
+    }
+    int ans=0;
+    for(auto &v:segs) {
+        // out(v);
+        int sz=v.size(),c=0;
+        int right[sz]={0};
+        repr(i,sz-1,0) {
+            if(v[i]==1) c++;
+            else right[i]=c,c=0;
+        }
+        c=0;
+        rep(i,0,sz) {
+            if(v[i]==1) c++;
+            else {
+                ans+=(c+1)*(right[i]+1)-1; c=0;
+            } 
+        }
+    }
+    cout<<ans<<endl;
+}
+
+signed main()
+{
+    ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+    // sieve();
+    int tc = 1;
+    cin>>tc;
+    for(int t=1;t<=tc;t++)
+    {
+        // cout<<"Case #"<<t<<": ";
+        solve();
+    }
+    return 0;
+}
