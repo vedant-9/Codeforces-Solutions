@@ -1,5 +1,5 @@
 # Codeforces-Solutions
-My AC Solutions to nearest 1300+ Codeforces Problems.
+My AC Solutions to nearest 1500+ Codeforces Problems.
 
 ## Problem Link Format
 - https://codeforces.com/contest/_contestID_/problem/_problemTag_
